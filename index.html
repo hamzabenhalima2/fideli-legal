@@ -1,47 +1,522 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="index,follow">
-<title>Mentions légales — Fideli</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fideli — Toutes les cartes de fidélité de vos clients, dans une seule application</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:light dark}
-*{box-sizing:border-box}
-body{margin:0;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
- background:#F4EEE0;color:#1a2b36}
-@media (prefers-color-scheme:dark){body{background:#0B1E2D;color:#e8e2d4}a{color:#E6B23A}
- code{background:rgba(255,255,255,.08)}th,td{border-color:rgba(255,255,255,.15)}th{background:rgba(255,255,255,.05)}}
-.wrap{max-width:760px;margin:0 auto;padding:40px 22px 80px}
-header a{font-size:14px}
-h1{font-size:1.7rem;line-height:1.25;margin:.2em 0 .1em}
-h2{font-size:1.15rem;margin:2em 0 .4em;border-top:1px solid rgba(0,0,0,.12);padding-top:1em}
-h2:first-of-type{border:0;padding-top:0}
-a{color:#8A6A12}
-code{background:rgba(0,0,0,.06);padding:.1em .35em;border-radius:4px;font-size:.9em}
-ul{padding-left:1.3em}li{margin:.3em 0}
-table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.93rem;overflow-x:auto;display:block}
-th,td{border:1px solid rgba(0,0,0,.18);padding:8px 10px;text-align:left;vertical-align:top}
-th{background:rgba(0,0,0,.05)}
-hr{border:0;border-top:1px solid rgba(0,0,0,.15);margin:2em 0}
-footer{margin-top:3em;font-size:.85rem;opacity:.7}
+  :root{
+    --navy: #0F1B33;
+    --navy-2: #1A2B4D;
+    --gold: #E7A93E;
+    --gold-dark: #C98A22;
+    --paper: #FBF8F2;
+    --ink: #16181F;
+    --ink-soft: #4A4E5A;
+    --white: #FFFFFF;
+    --line: rgba(15,27,51,0.12);
+    --radius: 18px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.55;
+  }
+  h1,h2,h3,.display{
+    font-family:'Instrument Serif', serif;
+    font-weight:400;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  p{ margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img,svg{ display:block; max-width:100%; }
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    padding:14px 26px; border-radius:999px; font-weight:600; font-size:15px;
+    cursor:pointer; border:1px solid transparent; transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); }
+  .btn-gold{ background:var(--gold); color:var(--navy); }
+  .btn-gold:hover{ background:var(--gold-dark); }
+  .btn-outline{ background:transparent; color:var(--white); border-color:rgba(255,255,255,0.35); }
+  .btn-outline:hover{ background:rgba(255,255,255,0.08); }
+  .btn-outline-dark{ background:transparent; color:var(--navy); border-color:var(--line); }
+  .btn-outline-dark:hover{ background:rgba(15,27,51,0.05); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,248,242,0.9); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 28px; max-width:1120px; margin:0 auto; }
+  .logo{ display:flex; align-items:center; gap:10px; font-family:'Instrument Serif',serif; font-size:22px; color:var(--navy); }
+  .logo-mark{
+    width:34px; height:34px; border-radius:9px; background:var(--navy);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--gold); font-family:'Instrument Serif',serif; font-size:20px;
+  }
+  .nav-links{ display:flex; gap:32px; font-size:15px; color:var(--ink-soft); }
+  .nav-links a:hover{ color:var(--navy); }
+  @media (max-width:760px){ .nav-links{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--navy);
+    color:var(--white);
+    padding:100px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center; }
+  @media (max-width:900px){ .hero .wrap{ grid-template-columns:1fr; } }
+  .hero h1{ font-size:clamp(38px,5vw,58px); color:var(--white); }
+  .hero .eyebrow-none{ margin-bottom:18px; }
+  .hero p.lead{
+    margin-top:22px; font-size:18px; color:rgba(255,255,255,0.78); max-width:480px;
+  }
+  .hero-ctas{ margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; }
+  .hero-note{ margin-top:18px; font-size:13px; color:rgba(255,255,255,0.5); }
+
+  /* stamp card graphic */
+  .card-graphic{
+    background:var(--navy-2);
+    border:1px solid rgba(231,169,62,0.35);
+    border-radius:22px;
+    padding:28px;
+    position:relative;
+  }
+  .card-graphic .card-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:26px; }
+  .card-graphic .merchant{ font-family:'Instrument Serif',serif; font-size:22px; color:var(--gold); }
+  .card-graphic .merchant-sub{ font-size:12px; color:rgba(255,255,255,0.5); margin-top:4px; }
+  .stamps{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+  .stamp{
+    aspect-ratio:1; border-radius:50%; border:1.5px dashed rgba(231,169,62,0.5);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .stamp.filled{ background:var(--gold); border-style:solid; }
+  .stamp.filled::after{ content:'✓'; color:var(--navy); font-weight:700; font-size:15px; }
+  .card-graphic .card-foot{ margin-top:24px; display:flex; justify-content:space-between; font-size:13px; color:rgba(255,255,255,0.55); }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:96px 0; }
+  .section-head{ max-width:620px; margin-bottom:56px; }
+  .section-head h2{ font-size:clamp(30px,3.6vw,42px); color:var(--navy); }
+  .section-head p{ margin-top:16px; font-size:17px; color:var(--ink-soft); }
+
+  /* ---------- WHY APP ---------- */
+  .why{ background:var(--paper); }
+  .why-grid{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  @media (max-width:760px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-cell{ background:var(--white); padding:36px; }
+  .why-cell h3{ font-size:22px; color:var(--navy); margin-bottom:12px; }
+  .why-cell p{ color:var(--ink-soft); font-size:15px; }
+  .why-cell.dim{ background:var(--paper); }
+  .why-cell.dim h3{ color:var(--ink-soft); font-weight:600; font-family:'Inter',sans-serif; font-size:15px; letter-spacing:0.01em; }
+
+  /* ---------- STEPS ---------- */
+  .steps-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  @media (max-width:760px){ .steps-grid{ grid-template-columns:1fr; } }
+  .steps-grid .why-cell{ background:var(--white); }
+
+  /* ---------- FEATURES ---------- */
+  .features-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; }
+  @media (max-width:820px){ .features-grid{ grid-template-columns:1fr; } }
+  .feature-col h3{ font-size:15px; font-weight:600; color:var(--gold-dark); font-family:'Inter',sans-serif; margin-bottom:20px; text-transform:none; }
+  .feature-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:18px; }
+  .feature-list li{ display:flex; gap:14px; align-items:flex-start; }
+  .feature-dot{
+    flex:none; width:22px; height:22px; border-radius:50%; background:var(--navy);
+    color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:12px; margin-top:2px;
+  }
+  .feature-list .txt strong{ display:block; font-size:15.5px; color:var(--navy); font-weight:600; }
+  .feature-list .txt span{ font-size:14px; color:var(--ink-soft); }
+
+  /* ---------- CALCULATOR ---------- */
+  .calc{ background:var(--navy); color:var(--white); }
+  .calc .section-head h2{ color:var(--white); }
+  .calc .section-head p{ color:rgba(255,255,255,0.7); }
+  .calc-box{
+    background:var(--navy-2); border:1px solid rgba(231,169,62,0.3); border-radius:22px;
+    padding:44px; display:grid; grid-template-columns:1fr 1fr; gap:44px;
+  }
+  @media (max-width:820px){ .calc-box{ grid-template-columns:1fr; padding:28px; } }
+  .field{ margin-bottom:26px; }
+  .field label{ display:block; font-size:14px; color:rgba(255,255,255,0.7); margin-bottom:10px; }
+  .field input[type=number]{
+    width:100%; background:var(--navy); border:1px solid rgba(255,255,255,0.18); border-radius:12px;
+    padding:13px 16px; color:var(--white); font-size:16px; font-family:'Inter',sans-serif;
+  }
+  .field input[type=number]:focus{ outline:none; border-color:var(--gold); }
+  .field .range-row{ display:flex; align-items:center; gap:14px; }
+  input[type=range]{ flex:1; accent-color:var(--gold); }
+  .range-val{ font-family:'Instrument Serif',serif; font-size:22px; color:var(--gold); min-width:52px; text-align:right; }
+
+  .calc-result{ display:flex; flex-direction:column; justify-content:center; }
+  .result-label{ font-size:14px; color:rgba(255,255,255,0.6); }
+  .result-number{ font-family:'Instrument Serif',serif; font-size:52px; color:var(--gold); margin-top:6px; }
+  .result-sub{ margin-top:18px; font-size:14px; color:rgba(255,255,255,0.75); border-top:1px solid rgba(255,255,255,0.15); padding-top:18px; }
+  .result-sub strong{ color:var(--white); }
+  .calc-disclaimer{ margin-top:20px; font-size:12.5px; color:rgba(255,255,255,0.45); line-height:1.6; }
+
+  /* ---------- PRICING ---------- */
+  .pricing-toggle{
+    display:inline-flex; background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:4px; margin-bottom:44px;
+  }
+  .pricing-toggle button{
+    border:none; background:transparent; padding:10px 22px; border-radius:999px; font-size:14px; font-weight:600;
+    color:var(--ink-soft); cursor:pointer; font-family:'Inter',sans-serif;
+  }
+  .pricing-toggle button.active{ background:var(--navy); color:var(--white); }
+  .pricing-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:900px){ .pricing-grid{ grid-template-columns:1fr; } }
+  .price-card{
+    border:1px solid var(--line); border-radius:var(--radius); padding:34px; position:relative; background:var(--white);
+  }
+  .price-card.featured{ border-color:var(--navy); box-shadow:0 0 0 1px var(--navy); }
+  .price-card .perforation{
+    position:absolute; top:-1px; left:24px; right:24px; height:1px;
+    background-image:radial-gradient(circle, var(--line) 1.5px, transparent 1.5px);
+    background-size:12px 1px; background-repeat:repeat-x;
+  }
+  .price-tier{ font-size:13px; font-weight:600; color:var(--gold-dark); margin-bottom:6px; }
+  .price-card h3{ font-family:'Inter',sans-serif; font-size:18px; font-weight:600; color:var(--navy); }
+  .price-amount{ font-family:'Instrument Serif',serif; font-size:44px; color:var(--navy); margin-top:18px; }
+  .price-amount span{ font-family:'Inter',sans-serif; font-size:15px; color:var(--ink-soft); font-weight:400; }
+  .price-detail{ font-size:13px; color:var(--ink-soft); margin-top:6px; min-height:18px; }
+  .price-features{ list-style:none; padding:0; margin:26px 0 0; display:flex; flex-direction:column; gap:12px; }
+  .price-features li{ display:flex; gap:10px; font-size:14px; color:var(--ink-soft); }
+  .price-features li::before{ content:'✓'; color:var(--gold-dark); font-weight:700; flex:none; }
+  .price-cta{ margin-top:28px; width:100%; }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{ background:var(--paper); text-align:center; }
+  .final-cta h2{ font-size:clamp(30px,4vw,44px); color:var(--navy); max-width:640px; margin:0 auto; }
+  .final-cta p{ margin-top:16px; color:var(--ink-soft); font-size:17px; }
+  .final-cta .hero-ctas{ justify-content:center; margin-top:32px; }
+
+  footer{ background:var(--navy); color:rgba(255,255,255,0.6); padding:44px 0; font-size:13.5px; }
+  footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  footer a:hover{ color:var(--white); }
+  .footer-links{ display:flex; gap:22px; }
 </style>
 </head>
 <body>
-<div class="wrap">
 
+<header>
+  <nav>
+    <div class="logo"><span class="logo-mark">F</span>Fideli</div>
+    <div class="nav-links">
+      <a href="#pourquoi">Pourquoi une app</a>
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#calculateur">Calculateur</a>
+      <a href="#tarifs">Tarifs</a>
+    </div>
+    <a href="#tarifs" class="btn btn-gold" style="padding:10px 20px; font-size:14px;">Nous contacter</a>
+  </nav>
+</header>
 
-<h1>Fideli — Mentions légales</h1>
-<p>Fideli est une application mobile qui centralise les cartes de fidélité de
-plusieurs commerces au Maroc. Éditeur : <strong>M. Hamza Benhalima</strong>,
-entrepreneur individuel, Meknès, Maroc —
-<a href="mailto:hamza.benhalima2@hotmail.com">hamza.benhalima2@hotmail.com</a>.</p>
-<ul>
-<li><a href="confidentialite.html">Politique de confidentialité</a></li>
-<li><a href="cgu.html">Conditions générales d’utilisation</a></li>
-<li><a href="support.html">Assistance</a></li>
-</ul>
-<footer>Fideli — Hamza Benhalima, Meknès, Maroc · <a href="mailto:hamza.benhalima2@hotmail.com">hamza.benhalima2@hotmail.com</a></footer>
-</div>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Vos clients ont une carte de fidélité par commerce.<br>Fideli leur en donne une seule.</h1>
+      <p class="lead">Chaque commerce garde sa propre carte, ses propres règles et ses propres récompenses — mais vos clients ne portent plus rien sur eux. Tout est dans une seule application, pensée pour la fidélité.</p>
+      <div class="hero-ctas">
+        <a href="#tarifs" class="btn btn-gold">Voir les tarifs</a>
+        <a href="#fonctionnalites" class="btn btn-outline">Voir comment ça marche</a>
+      </div>
+      <p class="hero-note">Fonctionne sur iPhone et Android.</p>
+    </div>
+    <div class="card-graphic">
+      <div class="card-top">
+        <div>
+          <div class="merchant">Restaurant</div>
+          <div class="merchant-sub">7 achats jusqu'à la récompense</div>
+        </div>
+      </div>
+      <div class="stamps">
+        <div class="stamp filled"></div>
+        <div class="stamp filled"></div>
+        <div class="stamp filled"></div>
+        <div class="stamp filled"></div>
+        <div class="stamp"></div>
+        <div class="stamp"></div>
+        <div class="stamp"></div>
+        <div class="stamp"></div>
+        <div class="stamp"></div>
+        <div class="stamp"></div>
+      </div>
+      <div class="card-foot">
+        <span>Carte digitale</span>
+        <span>Fideli by BHM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="pourquoi">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Pourquoi une application, et pas juste une carte dans Apple Wallet ou Google Wallet ?</h2>
+      <p>Ajouter une carte au Wallet du téléphone semble plus simple. Mais une carte Wallet ne fait qu'une seule chose : afficher un solde. Une application peut faire tout ce qu'un commerce de fidélité a réellement besoin de faire.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-cell dim">
+        <h3>Une carte Wallet</h3>
+        <p>Un visuel figé qui affiche un nombre de points. Rien de plus — pas de gestion, pas de tableau de bord, pas de lien entre plusieurs commerces.</p>
+      </div>
+      <div class="why-cell">
+        <h3>Une application Fideli</h3>
+        <p>Un espace complet : vos clients gèrent toutes leurs cartes fidélité au même endroit, et vous gérez votre commerce, vos employés et vos clients depuis un vrai tableau de bord.</p>
+      </div>
+      <div class="why-cell dim">
+        <h3>Une carte de plus, perdue parmi les autres</h3>
+        <p>Une carte Wallet s'entasse avec les billets d'avion et les tickets de concert. C'est la première chose que vos clients suppriment quand ils font le tri.</p>
+      </div>
+      <div class="why-cell">
+        <h3>Une place dédiée à la fidélité</h3>
+        <p>Dans Fideli, la carte de votre commerce est entourée d'autres cartes de fidélité — pas de billets de train. Vos clients l'ouvrent pour une seule raison : cumuler et utiliser leurs points.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="comment-ca-marche">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Comment ça marche</h2>
+      <p>Le même geste qu'une carte en papier, sans la carte.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="why-cell">
+        <h3>1. Le client montre sa carte</h3>
+        <p>Il ouvre Fideli et affiche la carte de votre commerce, prête à être scannée en caisse.</p>
+      </div>
+      <div class="why-cell">
+        <h3>2. Vous scannez, le point est ajouté</h3>
+        <p>Un scan côté commerçant crédite le point ou le tampon, selon les règles que vous avez définies.</p>
+      </div>
+      <div class="why-cell">
+        <h3>3. La récompense se débloque</h3>
+        <p>Le client suit sa progression dans l'app et reçoit sa récompense une fois le palier atteint.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="fonctionnalites">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ce que Fideli permet, aujourd'hui</h2>
+      <p>Une carte de fidélité digitale complète, côté commerçant comme côté client.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-col">
+        <h3>Pour votre commerce</h3>
+        <ul class="feature-list">
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Carte de fidélité personnalisée</strong><span>Votre propre carte digitale, vos propres règles de points et de récompense.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Scan rapide en caisse</strong><span>Un scan pour créditer un point ou un tampon à votre client.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Tableau de bord avec statistiques</strong><span>Suivez l'activité de votre carte de fidélité en temps réel.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Gestion des employés</strong><span>Donnez un accès limité à votre personnel en caisse, révocable à tout moment.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Gestion de vos clients</strong><span>Recherchez, corrigez une information, ou bannissez un compte en cas d'abus.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Contrôle total en libre-service</strong><span>Suspendez votre commerce ou régénérez votre code d'accès quand vous le voulez, sans support.</span></div></li>
+        </ul>
+      </div>
+      <div class="feature-col">
+        <h3>Pour vos clients</h3>
+        <ul class="feature-list">
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Une seule application, toutes les cartes</strong><span>Chaque commerce visité garde sa propre carte, réunie au même endroit.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Historique des points et récompenses</strong><span>Ce qui a été gagné, commerce par commerce.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Rien à transporter</strong><span>Plus de carte en papier à perdre ou à oublier chez soi.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Compte personnel</strong><span>Profil et gestion du compte, y compris sa suppression, directement dans l'app.</span></div></li>
+          <li><div class="feature-dot">✓</div><div class="txt"><strong>Synchronisé sur iOS et Android</strong><span>Un point ajouté par un commerçant apparaît immédiatement, quel que soit l'appareil du client.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="calc" id="calculateur">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Ce que la fidélité peut rapporter à votre commerce</h2>
+      <p>Un programme de fidélité pousse une partie de vos clients à revenir plus souvent. Ajustez les chiffres pour votre commerce et voyez l'effet sur votre chiffre d'affaires.</p>
+    </div>
+    <div class="calc-box">
+      <div>
+        <div class="field">
+          <label for="panier">Panier moyen par visite (MAD)</label>
+          <input type="number" id="panier" value="80" min="0">
+        </div>
+        <div class="field">
+          <label for="clients">Clients réguliers par mois</label>
+          <input type="number" id="clients" value="150" min="0">
+        </div>
+        <div class="field">
+          <label for="hausse">Hausse estimée des visites grâce à la fidélité</label>
+          <div class="range-row">
+            <input type="range" id="hausse" min="10" max="30" value="20">
+            <div class="range-val" id="hausse-val">20%</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="result-label">Chiffre d'affaires supplémentaire estimé, par mois</div>
+        <div class="result-number" id="result-ca">2 400 MAD</div>
+        <div class="result-sub">Abonnement Fideli (commerce unique) : <strong>349 MAD/mois</strong><br>Gain net estimé : <strong id="result-net">2 051 MAD/mois</strong></div>
+        <div class="calc-disclaimer">Estimation à titre indicatif, basée sur l'hypothèse de hausse de fréquentation que vous ajustez ci-contre. Le résultat réel dépend de votre commerce, de votre clientèle et de la façon dont le programme est utilisé.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tarifs">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Un tarif simple, la même application pour tous</h2>
+      <p>Toutes les formules donnent accès aux mêmes fonctionnalités. Seul le nombre de points de vente change le prix.</p>
+    </div>
+
+    <div class="pricing-toggle" id="toggle">
+      <button class="active" data-period="mensuel">Mensuel</button>
+      <button data-period="trimestriel">Trimestriel</button>
+      <button data-period="annuel">Annuel</button>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="perforation"></div>
+        <div class="price-tier">1 point de vente</div>
+        <h3>Commerce unique</h3>
+        <div class="price-amount"><span id="p1-amount">349</span> <span>MAD/mois</span></div>
+        <div class="price-detail" id="p1-detail">Facturé chaque mois</div>
+        <ul class="price-features">
+          <li>Cartes de fidélité illimitées</li>
+          <li>Scan en caisse illimité</li>
+          <li>Statistiques en temps réel</li>
+          <li>Sans engagement, résiliable à tout moment</li>
+        </ul>
+        <a href="mailto:fideli.maroc@gmail.com?subject=Essai%20gratuit%20Fideli%20-%20Commerce%20unique" class="btn btn-outline-dark price-cta">Nous contacter</a>
+      </div>
+
+      <div class="price-card featured">
+        <div class="perforation"></div>
+        <div class="price-tier">2 à 5 magasins</div>
+        <h3>Petite chaîne</h3>
+        <div class="price-amount"><span id="p2-amount">549</span> <span>MAD/mois</span></div>
+        <div class="price-detail" id="p2-detail">Facturé chaque mois</div>
+        <ul class="price-features">
+          <li>Tout ce qui est inclus dans Commerce unique</li>
+          <li>Jusqu'à 5 points de vente</li>
+          <li>Statistiques par point de vente</li>
+          <li>Sans engagement, résiliable à tout moment</li>
+        </ul>
+        <a href="mailto:fideli.maroc@gmail.com?subject=Essai%20gratuit%20Fideli%20-%20Petite%20chaine" class="btn btn-gold price-cta">Nous contacter</a>
+      </div>
+
+      <div class="price-card">
+        <div class="perforation"></div>
+        <div class="price-tier">6 magasins et plus</div>
+        <h3>Réseau</h3>
+        <div class="price-amount">Sur devis</div>
+        <div class="price-detail">Un tarif construit avec vous</div>
+        <ul class="price-features">
+          <li>Tout ce qui est inclus dans Petite chaîne</li>
+          <li>Points de vente illimités</li>
+          <li>Accompagnement dédié</li>
+        </ul>
+        <a href="mailto:fideli.maroc@gmail.com?subject=Demande%20de%20devis%20Fideli%20-%20Reseau" class="btn btn-outline-dark price-cta">Demander un devis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Prêt à donner une vraie carte de fidélité à votre commerce ?</h2>
+    <p>Sans engagement, résiliable à tout moment.</p>
+    <div class="hero-ctas">
+      <a href="mailto:fideli.maroc@gmail.com?subject=Contact%20Fideli" class="btn btn-gold" style="color:var(--navy);">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Fideli by BHM</div>
+    <div class="footer-links">
+      <a href="https://hamzabenhalima2.github.io/fideli-legal/confidentialite.html">Confidentialité</a>
+      <a href="https://hamzabenhalima2.github.io/fideli-legal/support.html">Support</a>
+      <a href="mailto:fideli.maroc@gmail.com">fideli.maroc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Pricing toggle ----
+  const pricing = {
+    mensuel: {
+      p1: { amount: 349, detail: 'Facturé chaque mois' },
+      p2: { amount: 549, detail: 'Facturé chaque mois' }
+    },
+    trimestriel: {
+      p1: { amount: 329, detail: '987 MAD tous les 3 mois' },
+      p2: { amount: 519, detail: '1 557 MAD tous les 3 mois' }
+    },
+    annuel: {
+      p1: { amount: 291, detail: '3 490 MAD par an — 2 mois offerts' },
+      p2: { amount: 458, detail: '5 490 MAD par an — 2 mois offerts' }
+    }
+  };
+  const toggle = document.getElementById('toggle');
+  toggle.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if(!btn) return;
+    toggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const period = btn.dataset.period;
+    document.getElementById('p1-amount').textContent = pricing[period].p1.amount;
+    document.getElementById('p1-detail').textContent = pricing[period].p1.detail;
+    document.getElementById('p2-amount').textContent = pricing[period].p2.amount;
+    document.getElementById('p2-detail').textContent = pricing[period].p2.detail;
+  });
+
+  // ---- Margin calculator ----
+  const panierInput = document.getElementById('panier');
+  const clientsInput = document.getElementById('clients');
+  const hausseInput = document.getElementById('hausse');
+  const hausseVal = document.getElementById('hausse-val');
+  const resultCA = document.getElementById('result-ca');
+  const resultNet = document.getElementById('result-net');
+  const SUBSCRIPTION = 349;
+
+  function formatMAD(n){
+    return Math.round(n).toLocaleString('fr-FR') + ' MAD';
+  }
+
+  function updateCalc(){
+    const panier = parseFloat(panierInput.value) || 0;
+    const clients = parseFloat(clientsInput.value) || 0;
+    const hausse = parseFloat(hausseInput.value) || 0;
+    hausseVal.textContent = hausse + '%';
+    const supplement = panier * clients * (hausse / 100);
+    resultCA.textContent = formatMAD(supplement) + '/mois';
+    resultNet.textContent = formatMAD(Math.max(supplement - SUBSCRIPTION, 0)) + '/mois';
+  }
+
+  [panierInput, clientsInput, hausseInput].forEach(el => el.addEventListener('input', updateCalc));
+  updateCalc();
+</script>
+
 </body>
 </html>
